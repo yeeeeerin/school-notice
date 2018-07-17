@@ -61,7 +61,7 @@ public class Controller {
     }
 
 
-    @RequestMapping(value = "/message", method = RequestMethod.POST, headers = {"Content-type=application/json"})
+    @RequestMapping(value = "/message", method = RequestMethod.POST, headers = {"Content-type=application/json"},produces="text/plain;charset=UTF-8")
     @ResponseBody
     public String message(@RequestBody String resObj) {
 
