@@ -120,7 +120,7 @@ public class Controller {
                 e.printStackTrace();
             }
 
-            //jobjText.put("text",text);
+            jobjText.put("text",text);
 
 
         } else if(content.contains("장학")){
@@ -182,12 +182,14 @@ public class Controller {
 
             //식단 이미지 저장
             try {
-                jobjMenuImg.put("url",restaurant());
+                String s = restaurant();
+                jobjMenuImg.put("url",s);
+                System.out.println(s);
                 //사이즈
-                /*
+
                 jobjMenuImg.put("width",480);
                 jobjMenuImg.put("height",640);
-                 */
+
             }catch (Exception e){
                 e.printStackTrace();
             }
@@ -196,6 +198,7 @@ public class Controller {
 
 
             jobjText.put("photo",jobjMenuImg);
+
             jobjText.put("text",text);
 
         }
