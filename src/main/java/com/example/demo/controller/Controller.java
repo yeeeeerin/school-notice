@@ -187,8 +187,10 @@ public class Controller {
                 System.out.println(s);
                 //사이즈
 
-                jobjMenuImg.put("width",682);
-                jobjMenuImg.put("height",1024);
+                //jobjMenuImg.put("width",682);
+                //jobjMenuImg.put("height",1024);
+
+                jobjMenuImg.put("label","식단표 입니다.");
 
             }catch (Exception e){
                 e.printStackTrace();
@@ -197,7 +199,8 @@ public class Controller {
             text = "식단은 이미지로 표시됩니다.";
 
 
-            jobjText.put("photo",jobjMenuImg);
+            //jobjText.put("photo",jobjMenuImg);
+            jobjText.put("message_button",jobjMenuImg);
 
             jobjText.put("text",text);
 
