@@ -118,7 +118,7 @@ public class Controller {
                 e.printStackTrace();
             }
 
-            jobjText.put("text",text);
+            //jobjText.put("text",text);
             jobjmesBtn.put("label","선택하신 [학사] 공지사항 입니다.");
 
         } else if(content.contains("장학")){
