@@ -105,8 +105,10 @@ public class Controller {
         if(content.contains("전체공지사항") || content.contains("전체")){
             System.out.println("click 전체공지사항");
             jobjText.put("text","준비중 입니다! 조금만 기다려 주세요!");
-            jobjmesBtn.put("label","전제공지사항 메뉴는 준비중 입니다!");
+            jobjmesBtn.put("label","학교 홈페이지 가기");
             jobjmesBtn.put("url"," http://www.swu.ac.kr");
+
+            jobjText.put("message_button",jobjmesBtn);
 
 
         } else if(content.contains("학사")){
@@ -119,7 +121,7 @@ public class Controller {
             }
 
             //jobjText.put("text",text);
-            jobjmesBtn.put("label","선택하신 [학사] 공지사항 입니다.");
+
 
         } else if(content.contains("장학")){
 
@@ -132,7 +134,7 @@ public class Controller {
             }
 
             jobjText.put("text",text);
-            jobjmesBtn.put("label","선택하신 [장학] 공지사항 입니다.");
+
 
         } else if(content.contains("행사")){
 
@@ -145,7 +147,7 @@ public class Controller {
             }
 
             jobjText.put("text",text);
-            jobjmesBtn.put("label","선택하신 [행사] 공지사항 입니다.");
+
 
         } else if(content.contains("취업") || content.contains("채용")){
 
@@ -158,7 +160,7 @@ public class Controller {
             }
 
             jobjText.put("text",text);
-            jobjmesBtn.put("label","선택하신 [채용/취업] 공지사항 입니다.");
+
 
         } else if(content.contains("일반") || content.contains("봉사")){
 
@@ -171,7 +173,7 @@ public class Controller {
             }
 
             jobjText.put("text",text);
-            jobjmesBtn.put("label","선택하신 [일반/봉사] 공지사항 입니다.");
+
 
         } else if(content.contains("샬롬 식단")){
             System.out.println("click 샬롬 식단");
@@ -191,14 +193,14 @@ public class Controller {
             }
 
             text = "식단은 이미지로 표시됩니다.";
-            jobjmesBtn.put("label","선택하신 샬롬 식당 식단표 입니다.");
+
 
             jobjText.put("photo",jobjMenuImg);
             jobjText.put("text",text);
 
         }
 
-        jobjText.put("message_button",jobjmesBtn);
+
         jobjRes.put("message", jobjText);
         jobjRes.put("keyboard", jobjBtn);
         System.out.println(jobjRes.toJSONString());
