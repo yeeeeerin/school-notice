@@ -106,7 +106,7 @@ public class Controller {
             System.out.println("click 전체공지사항");
             jobjText.put("text","준비중 입니다! 조금만 기다려 주세요!");
             jobjmesBtn.put("label","학교 홈페이지 가기");
-            jobjmesBtn.put("url"," http://www.swu.ac.kr");
+            jobjmesBtn.put("url","http://www.swu.ac.kr");
 
             jobjText.put("message_button",jobjmesBtn);
 
@@ -187,10 +187,12 @@ public class Controller {
                 System.out.println(s);
                 //사이즈
 
-                //jobjMenuImg.put("width",682);
-                //jobjMenuImg.put("height",1024);
+                jobjMenuImg.put("width",682);
+                jobjMenuImg.put("height",1024);
 
-                jobjMenuImg.put("label","식단표 입니다.");
+
+                jobjmesBtn.put("label","식단표 크게 보기");
+                jobjmesBtn.put("url",s);
 
             }catch (Exception e){
                 e.printStackTrace();
@@ -199,9 +201,9 @@ public class Controller {
             text = "식단은 이미지로 표시됩니다.";
 
 
-            //jobjText.put("photo",jobjMenuImg);
-            jobjText.put("message_button",jobjMenuImg);
 
+            jobjText.put("message_button",jobjmesBtn);
+            jobjText.put("photo",jobjMenuImg);
             jobjText.put("text",text);
 
         }
