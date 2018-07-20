@@ -187,8 +187,8 @@ public class Controller {
                 System.out.println(s);
                 //사이즈
 
-                jobjMenuImg.put("width",480);
-                jobjMenuImg.put("height",640);
+                jobjMenuImg.put("width",682);
+                jobjMenuImg.put("height",1024);
 
             }catch (Exception e){
                 e.printStackTrace();
