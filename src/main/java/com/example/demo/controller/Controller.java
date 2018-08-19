@@ -101,14 +101,15 @@ public class Controller {
                     //메세지 안에 있는 버튼
                     jobjmesBtn.put("label", message.getMessageBtn().getLabel());
                     jobjmesBtn.put("url", message.getMessageBtn().getUrl());
+
+                    jobjText.put("message_button",jobjmesBtn);
+                    jobjText.put("photo",jobjMenuImg);
                 }
 
             }catch (Exception e){
                 e.printStackTrace();
             }
 
-            jobjText.put("message_button",jobjmesBtn);
-            jobjText.put("photo",jobjMenuImg);
 
         }
 
