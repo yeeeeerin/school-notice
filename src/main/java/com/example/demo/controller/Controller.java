@@ -1,10 +1,12 @@
 package com.example.demo.controller;
 
+import com.example.demo.domain.Keyboard;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.json.simple.parser.JSONParser;
 
@@ -19,25 +21,18 @@ import java.util.ArrayList;
 @RestController
 public class Controller {
 
+    @Autowired
+    Keyboard keyboard;
+
     //produces="text/plain;charset=UTF-8" (한글 처리 관련)
     @RequestMapping(value = "/keyboard",method = RequestMethod.GET,produces="text/plain;charset=UTF-8")
     public String keyboard(){
         System.out.println("/keyboard");
 
         JSONObject jsonObject = new JSONObject();
-        ArrayList<String> btns = new ArrayList<>();
 
-        btns.add("전체공지사항");
-        btns.add("학사");
-        btns.add("장학");
-        btns.add("행사");
-        btns.add("채용/취업");
-        btns.add("일반/봉사");
-        btns.add("샬롬 식단");
-
-
-        jsonObject.put("type","buttons");
-        jsonObject.put("buttons",btns);
+        jsonObject.put("type",keyboard.getType());
+        jsonObject.put("buttons",keyboard.getBtns());
 
         return jsonObject.toJSONString();
     }
@@ -87,17 +82,8 @@ public class Controller {
         JSONObject jobjmesBtn = new JSONObject();
         JSONObject jobjBtn = new JSONObject();
 
-        ArrayList<String> btns = new ArrayList<>();
-        btns.add("전체공지사항");
-        btns.add("학사");
-        btns.add("장학");
-        btns.add("행사");
-        btns.add("채용/취업");
-        btns.add("일반/봉사");
-        btns.add("샬롬 식단");
-
-        jobjBtn.put("type", "buttons");
-        jobjBtn.put("buttons", btns);
+        jobjBtn.put("type", keyboard.getType());
+        jobjBtn.put("buttons", keyboard.getBtns());
 
         String text = "불러오지 못하였습니다.\n 다시 한번 시도해 주세요.\n 계속 작동하지 않는 경우 ebbunbul@swu.ac.kr로 메일 부탁드립니다.";
 

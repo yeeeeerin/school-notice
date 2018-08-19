@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 @Configuration
 public class DaoFactory {
+
     @Bean
     public Keyboard keyboard(){
         Keyboard keyboard = new Keyboard();
