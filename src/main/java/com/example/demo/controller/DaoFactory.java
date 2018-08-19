@@ -28,4 +28,10 @@ public class DaoFactory {
 
         return keyboard;
     }
+
+    @Bean
+    public MessageDao messageDao(){
+        MessageDao messageDao = new MessageDao();
+        return messageDao;
+    }
 }

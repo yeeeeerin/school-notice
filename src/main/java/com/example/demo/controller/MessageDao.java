@@ -1,5 +1,8 @@
 package com.example.demo.controller;
 
+import com.example.demo.domain.Message;
+import com.example.demo.domain.MessageBtn;
+import com.example.demo.domain.Photo;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
@@ -8,6 +11,61 @@ import java.util.ArrayList;
 
 public class MessageDao {
 
+    /*
+    메세지를 만들어주는 함수
+     */
+    public Message create(String selectBtn) throws Exception {
+
+        Message message = new Message();
+        Elements elements = null;
+
+        String text = "불러오지 못하였습니다.\n 다시 한번 시도해 주세요.\n 계속 작동하지 않는 경우 ebbunbul@swu.ac.kr로 메일 부탁드립니다."; //message.setText()에 저장할 변수
+        String bbsConfigFK = "";
+
+        if(selectBtn.contains("학사")){
+            bbsConfigFK="4";
+        }else if (selectBtn.contains("장학")){
+            bbsConfigFK="5";
+        }else if (selectBtn.contains("행사")){
+            bbsConfigFK="6";
+        }else if (selectBtn.contains("취업") || selectBtn.contains("채용")){
+            bbsConfigFK="7";
+        }else if (selectBtn.contains("일반") || selectBtn.contains("봉사")){
+            bbsConfigFK="8";
+        }
+
+
+        if(selectBtn.contains("샬롬 식단")){
+
+            String s = restaurant();
+            System.out.println(s);
+
+            MessageBtn messageBtn = new MessageBtn("식단표 크게 보기",s);
+            message.setMessageBtn(messageBtn);
+
+            Photo photo = new Photo(s,682,1024);
+            message.setPhoto(photo);
+
+            text = "";
+
+        }else if (selectBtn.contains("전체")){
+
+            MessageBtn messageBtn = new MessageBtn("학교 홈페이지 가기","http://www.swu.ac.kr");
+            message.setMessageBtn(messageBtn);
+
+            text = "준비중 입니다! 조금만 기다려 주세요!";
+
+        }else{
+
+            elements = pageCrawling("http://www.swu.ac.kr/front/boardlist.do?bbsConfigFK="+
+                    bbsConfigFK);
+            text = fullText(selectBtn,bbsConfigFK,elements);
+        }
+
+        message.setText(text);
+
+        return message;
+    }
 
     /*
     콘텐츠 문장을 꾸며줌
@@ -62,7 +120,7 @@ public class MessageDao {
     식단표에 대한 크롤링을 담당하는 함
      */
     public String restaurant() throws Exception {
-        Document url = Jsoup.connect("https://bds.bablabs.com/restaurants?campus_id=AwsaqReGHK").get();
+        Document url = Jsoup.connect("https://bds.bablabs.com/restaurants/NzE2ODc4ODk%3D?campus_id=AwsaqReGHK").get();
 
         Elements tagVal = url.select("img.img-fluid");
 

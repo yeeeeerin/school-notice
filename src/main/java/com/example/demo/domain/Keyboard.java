@@ -8,8 +8,8 @@ import java.util.ArrayList;
 @Getter
 @Setter
 public class Keyboard {
+
     private String type;
     private ArrayList<String> btns;
-
 
 }
