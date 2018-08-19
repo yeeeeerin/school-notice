@@ -38,15 +38,21 @@ public class MessageDao {
         if(selectBtn.contains("샬롬 식단")){
 
             String s = restaurant();
-            System.out.println(s);
+            //System.out.println(s);
 
-            MessageBtn messageBtn = new MessageBtn("식단표 크게 보기",s);
-            message.setMessageBtn(messageBtn);
+            //식단표가 업로드 되어있지 않다면?
+            if(s.equals("")) {
+                text = "식단표가 업로드 되어있지 않습니다.";
+            }else {
 
-            Photo photo = new Photo(s,682,1024);
-            message.setPhoto(photo);
+                MessageBtn messageBtn = new MessageBtn("식단표 크게 보기", s);
+                message.setMessageBtn(messageBtn);
 
-            text = "";
+                Photo photo = new Photo(s, 682, 1024);
+                message.setPhoto(photo);
+
+                text = "";
+            }
 
         }else if (selectBtn.contains("전체")){
 

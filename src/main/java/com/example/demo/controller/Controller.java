@@ -91,15 +91,17 @@ public class Controller {
             //식단 이미지 저장
             try {
 
-                jobjMenuImg.put("url",message.getPhoto().getUrl());
+                if(message.getPhoto() != null) {
+                    jobjMenuImg.put("url", message.getPhoto().getUrl());
 
-                //사이즈
-                jobjMenuImg.put("width",message.getPhoto().getWidth());
-                jobjMenuImg.put("height",message.getPhoto().getHeight());
+                    //사이즈
+                    jobjMenuImg.put("width", message.getPhoto().getWidth());
+                    jobjMenuImg.put("height", message.getPhoto().getHeight());
 
-                //메세지 안에 있는 버튼
-                jobjmesBtn.put("label",message.getMessageBtn().getLabel());
-                jobjmesBtn.put("url",message.getMessageBtn().getUrl());
+                    //메세지 안에 있는 버튼
+                    jobjmesBtn.put("label", message.getMessageBtn().getLabel());
+                    jobjmesBtn.put("url", message.getMessageBtn().getUrl());
+                }
 
             }catch (Exception e){
                 e.printStackTrace();
