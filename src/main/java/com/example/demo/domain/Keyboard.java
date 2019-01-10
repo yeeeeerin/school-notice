@@ -1,5 +1,7 @@
 package com.example.demo.domain;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,6 +12,6 @@ import java.util.ArrayList;
 public class Keyboard {
 
     private String type;
-    private ArrayList<String> btns;
+    private ArrayList<String> buttons;
 
 }

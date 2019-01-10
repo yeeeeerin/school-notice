@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.dao.MessageDao;
 import com.example.demo.domain.Keyboard;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,7 +24,7 @@ public class DaoFactory {
         btns.add("일반/봉사");
         btns.add("샬롬 식단");
 
-        keyboard.setBtns(btns);
+        keyboard.setButtons(btns);
         keyboard.setType("buttons");
 
         return keyboard;
