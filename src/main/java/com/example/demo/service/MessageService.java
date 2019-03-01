@@ -3,9 +3,9 @@ package com.example.demo.service;
 import com.example.demo.domain.Message;
 import com.example.demo.domain.MessageBtn;
 import com.example.demo.domain.Photo;
+import org.apache.logging.log4j.util.StringBuilderFormattable;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +20,7 @@ public class MessageService {
         Message message = new Message();
         Elements elements;
 
-        String text = "불러오지 못하였습니다.\n 다시 한번 시도해 주세요.\n 계속 작동하지 않는 경우 ebbunbul@swu.ac.kr로 메일 부탁드립니다."; //message.setText()에 저장할 변수
+        String text = "불러오지 못하였습니다.\n 다시 한번 시도해 주세요.\n 계속 작동하지 않는 경우 ebbunbul@swu.ac.kr로 메일 부탁드립니다.";
         String bbsConfigFK = "";
 
         if(selectBtn.contains("학사")){
@@ -61,7 +61,7 @@ public class MessageService {
 
             text = "준비중 입니다! 조금만 기다려 주세요!";
 
-        }else{
+        }else if(!text.equals("")){
 
             elements = pageCrawling("http://www.swu.ac.kr/front/boardlist.do?bbsConfigFK="+
                     bbsConfigFK);
@@ -76,7 +76,7 @@ public class MessageService {
     /*
     콘텐츠 문장을 꾸며줌
      */
-    public String fullText(String selectBtn, String bbsConfigFK , Elements list){
+    private String fullText(String selectBtn, String bbsConfigFK , Elements list){
 
         String fullStr =
                 "서울여대 공지사항 알람봇 입니다. \n" +
@@ -112,7 +112,7 @@ public class MessageService {
     /*
     공지사항에 대한 크롤링을 담당하는 함수
      */
-    public Elements pageCrawling(String pageUrl) throws Exception{
+    private Elements pageCrawling(String pageUrl) throws Exception{
 
         Document url = Jsoup.connect(pageUrl).get();
 
@@ -125,7 +125,7 @@ public class MessageService {
     /*
     식단표에 대한 크롤링을 담당하는 함
      */
-    public String restaurant() throws Exception {
+    private String restaurant() throws Exception {
 
         Document url_origin = Jsoup.connect("http://dorm.swu.ac.kr/bbs/bbs/?bbs_no=7").get();
         Elements tag = url_origin.select("a.btnRead");
