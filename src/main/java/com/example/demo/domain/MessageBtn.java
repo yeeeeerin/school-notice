@@ -1,5 +1,6 @@
 package com.example.demo.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,13 +12,8 @@ import lombok.Setter;
 
 @Getter
 @Setter
+@AllArgsConstructor
 public class MessageBtn {
     private String label;
     private String url;
-
-
-    public MessageBtn(String label,String url){
-        this.label = label;
-        this.url = url;
-    }
 }
