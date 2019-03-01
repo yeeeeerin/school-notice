@@ -1,4 +1,4 @@
-package com.example.demo.dao;
+package com.example.demo.service;
 
 import com.example.demo.domain.Message;
 import com.example.demo.domain.MessageBtn;
@@ -6,10 +6,10 @@ import com.example.demo.domain.Photo;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
+import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-
-public class MessageDao {
+@Service
+public class MessageService {
 
     /*
     메세지를 만들어주는 함수

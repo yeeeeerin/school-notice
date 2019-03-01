@@ -1,6 +1,5 @@
-package com.example.demo.controller;
+package com.example.demo.configuration;
 
-import com.example.demo.dao.MessageDao;
 import com.example.demo.domain.Keyboard;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -8,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import java.util.ArrayList;
 
 @Configuration
-public class DaoFactory {
+public class ApiConfig {
 
     @Bean
     public Keyboard keyboard(){
@@ -30,9 +29,4 @@ public class DaoFactory {
         return keyboard;
     }
 
-    @Bean
-    public MessageDao messageDao(){
-        MessageDao messageDao = new MessageDao();
-        return messageDao;
-    }
 }

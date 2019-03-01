@@ -1,8 +1,8 @@
 package com.example.demo.controller;
 
-import com.example.demo.dao.MessageDao;
 import com.example.demo.domain.Keyboard;
 import com.example.demo.domain.Message;
+import com.example.demo.service.MessageService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
@@ -21,7 +21,7 @@ public class Controller {
     Keyboard keyboard;
 
     @Autowired
-    MessageDao messageDao;
+    MessageService messageService;
 
     //produces="text/plain;charset=UTF-8" (한글 처리 관련)
     @GetMapping(value = "/keyboard",produces="text/plain;charset=UTF-8")
@@ -51,7 +51,7 @@ public class Controller {
 
         log.info(content);
 
-        Message message = messageDao.create(content);
+        Message message = messageService.create(content);
 
         return toStringResponseMaker(message);
 
