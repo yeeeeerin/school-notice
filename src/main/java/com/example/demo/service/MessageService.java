@@ -5,6 +5,7 @@ import com.example.demo.domain.MessageBtn;
 import com.example.demo.domain.Photo;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +18,7 @@ public class MessageService {
     public Message create(String selectBtn) throws Exception {
 
         Message message = new Message();
-        Elements elements = null;
+        Elements elements;
 
         String text = "불러오지 못하였습니다.\n 다시 한번 시도해 주세요.\n 계속 작동하지 않는 경우 ebbunbul@swu.ac.kr로 메일 부탁드립니다."; //message.setText()에 저장할 변수
         String bbsConfigFK = "";
@@ -38,7 +39,6 @@ public class MessageService {
         if(selectBtn.contains("샬롬 식단")){
 
             String s = restaurant();
-            //System.out.println(s);
 
             //식단표가 업로드 되어있지 않다면?
             if(s.equals("")) {
@@ -126,11 +126,13 @@ public class MessageService {
     식단표에 대한 크롤링을 담당하는 함
      */
     public String restaurant() throws Exception {
-        Document url = Jsoup.connect("https://bds.bablabs.com/restaurants/NzE2ODc4ODk%3D?campus_id=AwsaqReGHK").get();
 
-        Elements tagVal = url.select("img.img-fluid");
+        Document url_origin = Jsoup.connect("http://dorm.swu.ac.kr/bbs/bbs/?bbs_no=7").get();
+        Elements tag = url_origin.select("a.btnRead");
+        String t = "http://dorm.swu.ac.kr/bbs/bbs/view.php?bbs_no=7&data_no="+tag.eq(0).attr("value")+"&page_no=1&sub_id=";
 
-        String imgSrc = tagVal.eq(1).attr("src");
+        Document url = Jsoup.connect(t).get();
+        String imgSrc = "http://dorm.swu.ac.kr"+url.select("img[src^=/skin/upload]").attr("src");
 
         return imgSrc;
     }
