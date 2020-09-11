@@ -1,5 +1,5 @@
 
-<img src ="/img/notice.png" width="400"/>
+<img src ="/img/notice.png" width="600"/>
 
 ## 서울여대 공지사항 알람 봇
 
