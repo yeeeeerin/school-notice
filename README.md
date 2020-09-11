@@ -1,6 +1,6 @@
-<div>
-<img src ="/img/IMG_9429.PNG" width="190" height="330" style="display:inline;"/>
-<img src ="/img/IMG_9290.PNG" width="190" height="330" style="display:inline;"/>
-<img src ="/img/IMG_9291.PNG" width="190" height="330" style="display:inline;"/>
-<img src ="/img/IMG_9292.PNG" width="190" height="330" style="display:inline;"/>
-</div>
+
+<img src ="/img/notice.png"/>
+### 서울여대 공지사항 알람 봇
+
+- 홈페이지 각 탭에서 상위 10개 공지사항을 크롤링한 후 알림
+- 식단 정보 제공
