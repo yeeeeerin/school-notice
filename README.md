@@ -1,5 +1,5 @@
 
-<img src ="/img/notice-back-re.png"/>
+<img src ="/img/gong.png"/>
 
 ## 서울여대 공지사항 알람 봇
 
